@@ -90,6 +90,7 @@ module Mail
      #  Encoding.list.map{|e| [e.to_s==fix_encoding(e.to_s), e.to_s] }.select {|a,b| !b}
     def Ruby19.fix_encoding(encoding)
       case encoding
+        when /ks_c_5601-1987/ then return "EUC-KR"
         # ISO-8859-15, ISO-2022-JP and alike
         when /iso-?(\d{4})-?(\w{1,2})/i then return "ISO-#{$1}-#{$2}"
         # "ISO-2022-JP-KDDI"  and alike
